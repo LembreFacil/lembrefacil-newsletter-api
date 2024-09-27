@@ -1,28 +1,25 @@
 const express = require('express');
 const nodemailer = require('nodemailer');
 const bodyParser = require('body-parser');
-const cors = require('cors'); // Importe o cors
-require('dotenv').config(); // Carrega variáveis de ambiente
+const cors = require('cors');
+require('dotenv').config();
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
-// Middleware para habilitar CORS
-app.use(cors()); // Habilita CORS
+app.use(cors());
 app.use(bodyParser.json());
 
-// Configuração do Nodemailer usando variáveis de ambiente
 const transport = nodemailer.createTransport({
     host: 'smtp.gmail.com',
     port: 465,
     secure: true,
     auth: {
-        user: process.env.EMAIL_USER,  // Email do administrador
-        pass: process.env.EMAIL_PASS   // Senha do administrador
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS
     }
 });
 
-// Rota para envio de e-mails
 app.post('/send-email', (req, res) => {
     const { nome, email, celular } = req.body;
 
@@ -54,7 +51,6 @@ app.post('/send-email', (req, res) => {
         .catch(err => res.status(500).send('Erro ao enviar emails: ' + err));
 });
 
-// Iniciar o servidor
 app.listen(port, () => {
     console.log(`Servidor rodando na porta ${port}`);
 });

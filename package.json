@@ -1,14 +1,14 @@
 {
   "name": "lembrefacil-newsletter-api",
   "version": "1.0.0",
-  "description": "",
+  "description": "API para enviar newsletters no LembreFácil",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["newsletter", "email", "api"],
+  "author": "Seu Nome",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
