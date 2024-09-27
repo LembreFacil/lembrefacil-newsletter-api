@@ -8,9 +8,10 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 app.use(cors({
-    origin: 'http://127.0.0.1:5501', // Altere para o domínio do seu front-end
+    origin: ['http://127.0.0.1:5501', 'http://seu-dominio.com'], // Adicione mais origens conforme necessário
     methods: ['GET', 'POST'],
 }));
+
 
 app.use(bodyParser.json());
 
@@ -29,7 +30,7 @@ const transport = nodemailer.createTransport({
     }
 });
 
-app.post('/send-email', (req, res) => {
+app.post('/', (req, res) => {
     const { nome, email, celular } = req.body;
 
     const emailParaAdm = {
