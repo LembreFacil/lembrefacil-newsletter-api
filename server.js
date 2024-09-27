@@ -8,7 +8,7 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 app.use(cors({
-    origin: ['http://127.0.0.1:5501', 'http://seu-dominio.com'], // Adicione mais origens conforme necessário
+    origin: ['http://127.0.0.1:5501', 'https://lembrefacil.github.io/lembrefacil-website/'], // Adicione mais origens conforme necessário
     methods: ['GET', 'POST'],
 }));
 
