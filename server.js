@@ -10,6 +10,11 @@ const port = process.env.PORT || 3000;
 app.use(cors());
 app.use(bodyParser.json());
 
+// Rota raiz para confirmação de que a API está funcionando
+app.get('/', (req, res) => {
+    res.send('API LembreFácil está rodando!');
+});
+
 const transport = nodemailer.createTransport({
     host: 'smtp.gmail.com',
     port: 465,
