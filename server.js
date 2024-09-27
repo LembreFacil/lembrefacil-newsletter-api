@@ -7,7 +7,11 @@ require('dotenv').config();
 const app = express();
 const port = process.env.PORT || 3000;
 
-app.use(cors());
+app.use(cors({
+    origin: 'http://127.0.0.1:5501', // Altere para o domínio do seu front-end
+    methods: ['GET', 'POST'],
+}));
+
 app.use(bodyParser.json());
 
 // Rota raiz para confirmação de que a API está funcionando
