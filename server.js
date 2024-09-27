@@ -12,7 +12,12 @@ app.use(cors({
     methods: ['GET', 'POST'],
 }));
 
-
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', 'https://lembrefacil.github.io');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    next();
+  });
+  
 app.use(bodyParser.json());
 
 // Rota raiz para confirmação de que a API está funcionando
