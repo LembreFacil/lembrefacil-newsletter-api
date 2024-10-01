@@ -8,15 +8,10 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 app.use(cors({
-    origin: ['http://127.0.0.1:5501', 'https://lembrefacil.github.io/lembrefacil-website/'], // Adicione mais origens conforme necessário
+    origin: 'https://lembrefacil.github.io', // Permitir apenas este domínio
     methods: ['GET', 'POST'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
 }));
-
-app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', 'https://lembrefacil.github.io/lembrefacil-website/');
-    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-    next();
-});
   
 app.use(bodyParser.json());
 
